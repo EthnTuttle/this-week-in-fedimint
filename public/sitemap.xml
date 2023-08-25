@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://this-week-in-fedimint.com/</loc>
+    </url>
+    <url>
+        <loc>https://this-week-in-fedimint.com/faq/faq/</loc>
+    </url>
+    <url>
+        <loc>https://this-week-in-fedimint.com/weeks/</loc>
+    </url>
+    <url>
+        <loc>https://this-week-in-fedimint.com/weeks/week0/</loc>
+        <lastmod>2023-08-24</lastmod>
+    </url>
+</urlset>
