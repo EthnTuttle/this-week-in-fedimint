@@ -17,22 +17,47 @@
         <id>https://this-week-in-fedimint.com/weeks/week0/</id>
         
         <content type="html">&lt;h1 id=&quot;technical&quot;&gt;technical&lt;&#x2F;h1&gt;
-&lt;h1 id=&quot;fedimint-fedimint&quot;&gt;&lt;code&gt;fedimint&#x2F;fedimint&lt;&#x2F;code&gt;&lt;&#x2F;h1&gt;
-&lt;h2 id=&quot;changelog-and-or-release-summary&quot;&gt;changelog and&#x2F;or release summary&lt;&#x2F;h2&gt;
-&lt;h2 id=&quot;pr&quot;&gt;pr&lt;&#x2F;h2&gt;
-&lt;h2 id=&quot;issues&quot;&gt;issues&lt;&#x2F;h2&gt;
-&lt;h2 id=&quot;new-discussion&quot;&gt;new discussion&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;fedimint-fedimint&quot;&gt;&lt;code&gt;fedimint&#x2F;fedimint&lt;&#x2F;code&gt;&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;all sub-headers optional
+mostly links to the GitHub, maybe a summary&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;changelog-and-or-release-summary&quot;&gt;changelog and&#x2F;or release summary&lt;&#x2F;h3&gt;
+&lt;h3 id=&quot;pr&quot;&gt;pr&lt;&#x2F;h3&gt;
+&lt;h3 id=&quot;issues&quot;&gt;issues&lt;&#x2F;h3&gt;
+&lt;h3 id=&quot;new-discussion&quot;&gt;new discussion&lt;&#x2F;h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Sometimes newly active&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
-&lt;h1 id=&quot;fedimint-ui&quot;&gt;&lt;code&gt;fedimint&#x2F;ui&lt;&#x2F;code&gt;&lt;&#x2F;h1&gt;
-&lt;h1 id=&quot;fedimint-fedimint-org&quot;&gt;&lt;code&gt;fedimint&#x2F;fedimint.org&lt;&#x2F;code&gt;??&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;fedimint-ui&quot;&gt;&lt;code&gt;fedimint&#x2F;ui&lt;&#x2F;code&gt;&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;same sub-headers, all optional&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;fedimint-fedimint-org&quot;&gt;&lt;code&gt;fedimint&#x2F;fedimint.org&lt;&#x2F;code&gt;??&lt;&#x2F;h2&gt;
 &lt;h1 id=&quot;layer0&quot;&gt;layer0&lt;&#x2F;h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;the people and community layer of fedimint&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
 &lt;h1 id=&quot;news&quot;&gt;news&lt;&#x2F;h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;business and industry related things&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
 &lt;h1 id=&quot;ideas&quot;&gt;ideas&lt;&#x2F;h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;links to blogs or articles on the topic&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
 &lt;h1 id=&quot;apps&quot;&gt;apps&lt;&#x2F;h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Apps&#x2F;Client releases&#x2F;links&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
 &lt;h1 id=&quot;ui-gateway-releases&quot;&gt;ui&#x2F;gateway releases&lt;&#x2F;h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Core UI&#x2F;Gateway release notes&#x2F;announcements&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
 &lt;h1 id=&quot;deployments&quot;&gt;deployments&lt;&#x2F;h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;new fedimint federations and info about them&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
 </content>
         
     </entry>
