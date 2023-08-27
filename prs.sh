@@ -48,22 +48,7 @@ while IFS= read -r line; do
     PR_FILE_NAME="PR_${PR_NUM}.md"
     OUTFILE="${FOLDER_NAME}/${PR_FILE_NAME}"
     
-    # Add to Table of Contents
-    echo "- [PR #${PR_NUM}: ${PR_TITLE}](${PR_FILE_NAME}) - [View on GitHub](${PR_LINK})" >> "$TOC_FILE"
-    
-    # Markdown Summary
-    echo "## SUMMARY" > "$OUTFILE"
-    echo "- **PR #${PR_NUM}:** [$PR_TITLE]($PR_LINK)" >> "$OUTFILE"
-    echo "" >> "$OUTFILE"
-
-    # Detailed Information
-    echo "## DETAILS" >> "$OUTFILE"
-    echo "### Description:" >> "$OUTFILE"
-    echo "$PR_DESC" >> "$OUTFILE"
-    echo "" >> "$OUTFILE"
-    
     # Fetch and dump comments
-    echo "### Comments:" >> "$OUTFILE"
     COMMENTS=$(curl -s -H "Authorization: token $TOKEN" \
         -H "Accept: application/vnd.github.v3+json" \
         "https://api.github.com/repos/$OWNER/$REPO/issues/$PR_NUM/comments" | \
@@ -71,18 +56,12 @@ while IFS= read -r line; do
     
     if [[ -z "$COMMENTS" ]]; then
         TEXT_TO_SUMMARIZE="$PR_DESC"
-        echo "No comments for this PR." >> "$OUTFILE"
     else
         TEXT_TO_SUMMARIZE="${PR_DESC}\n${COMMENTS}"
-        echo "$COMMENTS" >> "$OUTFILE"
     fi
 
     TEXT_TO_SUMMARIZE=$(echo "$TEXT_TO_SUMMARIZE" | sed 's/"/\\"/g')
-
-    # Use jq to safely construct the JSON string
     JSON_SAFE_TEXT=$(echo "$TEXT_TO_SUMMARIZE" | jq -Rs .)
-
-    # Now, escape the double quotes using sed
     ESCAPED_TEXT=$(echo "$JSON_SAFE_TEXT" | sed 's/"/\\"/g')
 
     # Construct the JSON payload
@@ -95,8 +74,6 @@ while IFS= read -r line; do
 EOF
 )
 
-    echo $PAYLOAD
-
     # Make the API request
     API_RESPONSE=$(curl -s \
     -H "Content-Type: application/json" \
@@ -105,12 +82,34 @@ EOF
     "$API_URL")
 
     # Extract summary from the response
-    SUMMARY=$(echo "$API_RESPONSE")
+    SUMMARY=$(echo "$API_RESPONSE" | jq -r '.choices[0].message.content')
 
+    # Continue with the rest of the details
+    echo "## SUMMARY" > "$OUTFILE"
+    echo "- **PR #${PR_NUM}:** [$PR_TITLE]($PR_LINK)" >> "$OUTFILE"
     echo "" >> "$OUTFILE"
+
+    # Start the Markdown file with the GPT Summary
     echo "### GPT SUMMARY:" >> "$OUTFILE"
-    echo "$SUMMARY" | jq -r '.choices[0].message.content' >> "$OUTFILE"
+    echo "$SUMMARY" >> "$OUTFILE"
     echo "" >> "$OUTFILE"
+    
+    # Detailed Information
+    echo "## DETAILS" >> "$OUTFILE"
+    echo "### Description:" >> "$OUTFILE"
+    echo "$PR_DESC" >> "$OUTFILE"
+    echo "" >> "$OUTFILE"
+    
+    echo "### Comments:" >> "$OUTFILE"
+    if [[ -z "$COMMENTS" ]]; then
+        echo "No comments for this PR." >> "$OUTFILE"
+    else
+        echo "$COMMENTS" >> "$OUTFILE"
+    fi
+    echo "" >> "$OUTFILE"
+
+    # Add to Table of Contents
+    echo "- [PR #${PR_NUM}: ${PR_TITLE}](${PR_FILE_NAME}) - [View on GitHub](${PR_LINK})" >> "$TOC_FILE"
 
 done <<< "$PR_ENTRIES"
 
