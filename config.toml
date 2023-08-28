@@ -19,6 +19,8 @@ generate_feed = true
 # files are always copied, regardless of this setting.
 hard_link_static = false
 
+theme = "anemone"
+
 # The taxonomies to be rendered for the site and their configuration of the default languages
 # Example:
 #     taxonomies = [

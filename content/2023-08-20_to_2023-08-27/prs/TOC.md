@@ -1,3 +1,5 @@
++++
++++
 # Table of Contents for PRs from 2023-08-20 to 2023-08-27
 
 - [PR #3038: chore: use faster `typos` versions](PR_3038.md) - [View on GitHub](https://github.com/fedimint/fedimint/pull/3038)
@@ -27,4 +29,3 @@
 - [PR #3004: chore(devimint): minor debugging improvements](PR_3004.md) - [View on GitHub](https://github.com/fedimint/fedimint/pull/3004)
 - [PR #3003: chore: don't strip release binaries](PR_3003.md) - [View on GitHub](https://github.com/fedimint/fedimint/pull/3003)
 - [PR #3002: fix(bitcoinrpc): off-by-one in block count](PR_3002.md) - [View on GitHub](https://github.com/fedimint/fedimint/pull/3002)
-- [PR #2999: Add RPC to expose audit summary](PR_2999.md) - [View on GitHub](https://github.com/fedimint/fedimint/pull/2999)

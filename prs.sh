@@ -37,7 +37,9 @@ create_index_md "content/${START_DATE}_to_${END_DATE}" "Overview from ${START_DA
 
 # Start the Table of Contents file
 TOC_FILE="${FOLDER_NAME}/TOC.md"
-echo "# Table of Contents for PRs from ${START_DATE} to ${END_DATE}" > "$TOC_FILE"
+echo "+++" > "$TOC_FILE"
+echo "+++" >> "$TOC_FILE"
+echo "# Table of Contents for PRs from ${START_DATE} to ${END_DATE}" >> "$TOC_FILE"
 echo "" >> "$TOC_FILE"
 
 # Fetch pull request URLs that were created in the last 7 days
@@ -92,8 +94,11 @@ EOF
     # Extract summary from the response
     SUMMARY=$(echo "$API_RESPONSE" | jq -r '.choices[0].message.content')
 
+    echo "+++" > "$OUTFILE"
+    echo "+++" >> "$OUTFILE"
+
     # Continue with the rest of the details
-    echo "## SUMMARY" > "$OUTFILE"
+    echo "## SUMMARY" >> "$OUTFILE"
     echo "- **PR #${PR_NUM}:** [$PR_TITLE]($PR_LINK)" >> "$OUTFILE"
     echo "" >> "$OUTFILE"
 

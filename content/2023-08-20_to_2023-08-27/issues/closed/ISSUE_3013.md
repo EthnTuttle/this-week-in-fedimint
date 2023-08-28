@@ -1,0 +1,23 @@
++++
++++
+## SUMMARY
+- **Issue #3013:** [chore: rename "module gen" to "module init"](https://github.com/fedimint/fedimint/pull/3013)
+
+### GPT SUMMARY:
+null
+
+## DETAILS
+### Description:
+"Module Gen" was a shorthand for "Module Config Generator", but with time the whole thing took on more responsibilities, with config generation being only one of them.
+
+Seems like all of them have something to do with
+"module instance initialization", so "module init" seems like the best candidate.
+
+Fix #2055
+
+### Comments:
+- **douglaz:** > I don't have any strong feelings either way.
+
+![image](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExamVjcm9mY3RiY3k0MTEzd2h0azNoenp1bms3anVnNnpzeTN1MXd5ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/7XuXUlB2g13v0qE42j/giphy-downsized.gif)
+- **elsirion:** The merge queue prevented a silent conflict! :tada: 
+

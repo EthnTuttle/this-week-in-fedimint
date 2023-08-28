@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ section.title }}</h1>
+<ul>
+   {% for sec in section.subsections %}
+   {{ set sec_obj = get_section(path=sec) | }}
+   <li><a href="{{ get_url(path=sec) }}">{{ sec_obj.title }}</a></li>
+   {% endfor %}
+</ul>
+<ul>
+   {% for page in section.pages %}
+   <li><a href="{{ page.permalink }}">{{ page.title }}</a></li>
+   {% endfor %}
+</ul>
+{% endblock %}

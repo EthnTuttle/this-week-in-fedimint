@@ -46,7 +46,9 @@ process_issues() {
     create_index_md "$FOLDER_NAME" "List of ${STATE} Issues"
  
     TOC_FILE="${FOLDER_NAME}/TOC.md"
-    echo "# Table of Contents for ${STATE} Issues from ${START_DATE} to ${END_DATE}" > "$TOC_FILE"
+    echo "+++" > "$TOC_FILE"
+    echo "+++" >> "$TOC_FILE"
+    echo "# Table of Contents for ${STATE} Issues from ${START_DATE} to ${END_DATE}" >> "$TOC_FILE"
     echo "" >> "$TOC_FILE"
     
     # Extract only those issues which match the given state
@@ -95,9 +97,11 @@ EOF
 
         # Extract summary from the response
         SUMMARY=$(echo "$API_RESPONSE" | jq -r '.choices[0].message.content')
-
+        
+        echo "+++" > "$OUTFILE"
+        echo "+++" >> "$OUTFILE"
         # Continue with the rest of the details
-        echo "## SUMMARY" > "$OUTFILE"
+        echo "## SUMMARY" >> "$OUTFILE"
         echo "- **Issue #${ISSUE_NUM}:** [$ISSUE_TITLE]($ISSUE_LINK)" >> "$OUTFILE"
         echo "" >> "$OUTFILE"
 
