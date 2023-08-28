@@ -1,5 +1,14 @@
 #!/bin/bash
 
+create_index_md() {
+    local DIR="$1"
+    local TITLE="$2"
+
+    echo "+++" > "${DIR}/_index.md"
+    echo "title = \"${TITLE}\"" >> "${DIR}/_index.md"
+    echo "+++" >> "${DIR}/_index.md"
+}
+
 # Check if a token is provided
 if [[ -z "$1" ]] || [[ -z "$2" ]]; then
     echo "Usage: $0 <Your GitHub personal access token> <Your OpenAI API Key>"
@@ -15,18 +24,27 @@ API_URL="https://api.openai.com/v1/chat/completions"  # Updated the URL
 OWNER="fedimint"
 REPO="fedimint"
 
-# Ensure the "issues" directory exists
-mkdir -p "issues"
+# Ensure the "content" directory exists and create _index.md
+mkdir -p "content"
+create_index_md "content" "Content Overview"
 
 # Get dates for macOS `date` command
 START_DATE=$(date -v-7d +%Y-%m-%d)
 END_DATE=$(date +%Y-%m-%d)
 
+# New base directory based on the date range
+BASE_DIR="content/${START_DATE}_to_${END_DATE}"
+mkdir -p "$BASE_DIR"
+create_index_md "$BASE_DIR" "Issues from ${START_DATE} to ${END_DATE}"
+
 # Function to process issues (either open or closed)
 process_issues() {
     local STATE="$1"
-    FOLDER_NAME="issues/${STATE}/${START_DATE}_to_${END_DATE}"
+    FOLDER_NAME="${BASE_DIR}/issues/${STATE}"
     mkdir -p "$FOLDER_NAME"
+    
+    create_index_md "$FOLDER_NAME" "List of ${STATE} Issues"
+ 
     TOC_FILE="${FOLDER_NAME}/TOC.md"
     echo "# Table of Contents for ${STATE} Issues from ${START_DATE} to ${END_DATE}" > "$TOC_FILE"
     echo "" >> "$TOC_FILE"
@@ -107,7 +125,6 @@ EOF
 
     done <<< "$ISSUE_ENTRIES"
 
-    # [NOTE] Replace all "echo "Finished dumping Issue details..." at the bottom with the following:
     echo "Finished dumping ${STATE} Issue details to $FOLDER_NAME in Markdown format and created Table of Contents."
 }
 

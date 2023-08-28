@@ -1,31 +1,39 @@
 #!/bin/bash
 
+create_index_md() {
+    local DIR="$1"
+    local TITLE="$2"
+
+    echo "+++" > "${DIR}/_index.md"
+    echo "title = \"${TITLE}\"" >> "${DIR}/_index.md"
+    echo "+++" >> "${DIR}/_index.md"
+}
+
 # Check if a token is provided
 if [[ -z "$1" ]] || [[ -z "$2" ]]; then
     echo "Usage: $0 <Your GitHub personal access token> <Your OpenAI API Key>"
     exit 1
 fi
 
-
 TOKEN="$1"
 API_KEY="$2"
-
-API_URL="https://api.openai.com/v1/chat/completions"  # Updated the URL
+API_URL="https://api.openai.com/v1/chat/completions"
 
 # Variables
 OWNER="fedimint"
 REPO="fedimint"
 
-# Ensure the "prs" directory exists
-mkdir -p "prs"
-
 # Get dates for macOS `date` command
 START_DATE=$(date -v-7d +%Y-%m-%d)
 END_DATE=$(date +%Y-%m-%d)
-FOLDER_NAME="prs/${START_DATE}_to_${END_DATE}"
+FOLDER_NAME="content/${START_DATE}_to_${END_DATE}/prs" # Updated path to include 'content' directory
 
-# Create directory for the date range
 mkdir -p "$FOLDER_NAME"
+create_index_md "$FOLDER_NAME" "Pull Requests from ${START_DATE} to ${END_DATE}"
+
+# Create _index.md for content and date range directory
+create_index_md "content" "Content Overview"
+create_index_md "content/${START_DATE}_to_${END_DATE}" "Overview from ${START_DATE} to ${END_DATE}"
 
 # Start the Table of Contents file
 TOC_FILE="${FOLDER_NAME}/TOC.md"
